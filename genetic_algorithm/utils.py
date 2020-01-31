@@ -97,13 +97,13 @@ def generate_random_markov_model_with_path(names, number_of_repeated_states, pat
     model = MarkovModel(names, np.zeros((n_states, n_states)))
 
     repeated__numbered_names = model.repeated_numbered_names
+    print(repeated__numbered_names)
     path = generate_path(repeated__numbered_names[1:-1], path_length)
     correct_path = ["start"] + path + ["end"]
 
     model.add_path(correct_path)
     for i in range(number_of_branches):
         branch = generate_branch(repeated__numbered_names, correct_path)
-        print(branch)
         model.add_path(branch)
     return model
 

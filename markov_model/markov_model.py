@@ -2,7 +2,7 @@ from collections import deque
 
 import numpy as np
 import networkx as nx
-
+import matplotlib.pyplot as plt
 
 class MarkovModel:
     '''
@@ -34,6 +34,14 @@ class MarkovModel:
         G = nx.DiGraph()
         G.add_weighted_edges_from(edge_list)
         return G
+
+    def show_graph(self):
+        nx.draw_kamada_kawai(self.to_di_graph(), with_labels=True, node_size=3000)
+        plt.show()
+
+    def add_graph_to_plt(self):
+        plt.figure()
+        nx.draw_kamada_kawai(self.to_di_graph(), with_labels=True, node_size=3000)
 
     def to_edge_list(self):
         '''
